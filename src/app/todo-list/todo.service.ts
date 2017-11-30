@@ -58,6 +58,7 @@ export class TodoService {
 
   modifyStatus(item) {
     item.active = !item.active;
+    this.filterList();
     this.getCompletedTodoLength();
   }
 
