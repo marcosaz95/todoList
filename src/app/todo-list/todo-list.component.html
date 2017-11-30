@@ -1,11 +1,15 @@
 <div class="list-group">
-  <input type="text" [(ngModel)]="textToAdd" (keyup.enter)="addTodo()">
-  <app-todo *ngFor="let item of todoService.todoList; let idx = index" [item]="item" appShowButton 
-  (removeTodoEvent)="removeTodo(idx)" (modifyStatusEvent)="modifyStatus(item)"></app-todo>
+  <div class="form-group">
+    <h1>Add Todo</h1>
+    <input type="email" class="form-control" [(ngModel)]="textToAdd" (keyup.enter)="addTodo()" placeholder="Add Todo">
+  </div>
+  <hr>
+  <app-todo *ngFor="let item of todoService.todoList; let idx = index" [item]="item" appShowButton (removeTodoEvent)="removeTodo(idx)"
+    (modifyStatusEvent)="modifyStatus(item)"></app-todo>
   <hr>
   <div class="row">
     <label class="col-md-2">{{todoService.todoListTempLength - todoService.completedLength + ' items left'}}</label>
-    <div class="radio col-md-8"> 
+    <div class="radio col-md-8">
       <button (click)="filterList('all')">
         All
       </button>

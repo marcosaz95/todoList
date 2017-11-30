@@ -2,7 +2,15 @@ button {
     visibility: hidden;
 }
 
-
 .doneText {
     text-decoration: line-through;
+}
+
+label {
+    font-size: 30px;
+    margin-top: -20px;
+}
+
+input {
+    margin-top: 20px;
 }

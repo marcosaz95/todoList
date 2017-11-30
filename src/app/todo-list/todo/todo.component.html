@@ -2,5 +2,5 @@
   <input type="checkbox" class="form-check-input" [checked]="item.active" (click)="modifyStatus()">
   <label [ngClass]="{'doneText': item.active} ">{{item.text}}</label>
 </label>
-<button (click)="removeTodo()">X</button>
+<button (click)="removeTodo()" class="btn btn-danger pull-right">X</button>
 <br>
