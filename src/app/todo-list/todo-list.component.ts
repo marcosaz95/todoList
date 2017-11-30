@@ -10,7 +10,6 @@ import { TodoService } from './todo.service';
 export class TodoListComponent implements OnInit {
 
   textToAdd: string = "";
-  completedTodo: number = 0;
   todoService: TodoService;
 
   constructor(private _todoService: TodoService) {

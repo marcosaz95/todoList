@@ -4,7 +4,7 @@
   (removeTodoEvent)="removeTodo(idx)" (modifyStatusEvent)="modifyStatus(item)"></app-todo>
   <hr>
   <div class="row">
-    <label class="col-md-2">{{todoService.counter + ' items left'}}</label>
+    <label class="col-md-2">{{todoService.todoListTempLength - todoService.completedLength + ' items left'}}</label>
     <div class="radio col-md-8"> 
       <button (click)="filterList('all')">
         All

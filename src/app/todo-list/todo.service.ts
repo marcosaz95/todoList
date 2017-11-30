@@ -5,41 +5,37 @@ import { ITodo } from './todo.interface';
 export class TodoService {
 
   private _todoList: ITodo[];
-  private _counter: number;
   private _todoListTmp: ITodo[];
   private _completedLength: number;
 
   constructor() {
     this._todoList = [];
     this._todoListTmp = [];
-    this._counter = 0;
   }
 
   get todoList() {
     return this._todoList;
   }
 
-  get counter() {
-    return this._counter;
+  get todoListTempLength() {
+    return this._todoListTmp.length;
   }
 
   get completedLength() {
     return this._completedLength;
   }
 
+
+
   add(text) {
     this._todoListTmp.push({
       text: text,
       active: false
     })
-    this._counter++;
     this.getCompletedTodoLength();
   }
 
   remove(idx) {
-    if (!this._todoListTmp[idx].active) {
-      this._counter--;
-    }
     this._todoListTmp.splice(idx, 1);
     this._todoList = this._todoListTmp;
     this.getCompletedTodoLength();
@@ -53,7 +49,6 @@ export class TodoService {
 
   modifyStatus(item) {
     item.active = !item.active;
-    this._counter = (item.active) ? this._counter - 1 : this._counter + 1;
     this.getCompletedTodoLength();
   }
 
