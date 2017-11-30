@@ -25,7 +25,7 @@ export class TodoService {
 
   set status(status) {
     this._status = status;
-  } 
+  }
 
   get todoListTempLength() {
     return this._todoListTmp.length;
@@ -77,5 +77,13 @@ export class TodoService {
 
   getCompletedTodoLength() {
     this._completedLength = this._todoListTmp.filter(elm => elm.active).length;
+  }
+
+  checkAll() {
+    let assign = this._completedLength === 0;
+    this._todoListTmp.map(elm => {
+      elm.active = assign;
+    })
+    this.getCompletedTodoLength();
   }
 }

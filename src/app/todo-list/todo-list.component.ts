@@ -43,4 +43,8 @@ export class TodoListComponent implements OnInit {
     this._todoService.filterList();
   }
 
+  checkAll() {
+    this._todoService.checkAll();
+  }
+
 }

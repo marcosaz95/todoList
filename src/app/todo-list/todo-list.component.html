@@ -1,10 +1,14 @@
 <div class="list-group">
   <div class="form-group">
     <h1>Add Todo</h1>
-    <input type="email" class="form-control" [(ngModel)]="textToAdd" (keyup.enter)="addTodo()" placeholder="Add Todo">
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-success" (click)="checkAll()">Check All</button>
+      </span>
+      <input type="email" class="form-control" [(ngModel)]="textToAdd" (keyup.enter)="addTodo()" placeholder="Add Todo">
+    </div>
   </div>
-  <app-todo *ngFor="let item of todoService.todoList" [item]="item" appShowButton (removeTodoEvent)="removeTodo(item.id)"
-    (modifyStatusEvent)="modifyStatus(item)"></app-todo>
+  <app-todo *ngFor="let item of todoService.todoList" [item]="item" appShowButton (removeTodoEvent)="removeTodo(item.id)" (modifyStatusEvent)="modifyStatus(item)"></app-todo>
   <hr>
   <div class="row">
     <label class="col-md-6 item-left">{{todoService.todoListTempLength - todoService.completedLength + ' items left'}}</label>
@@ -13,9 +17,12 @@
     </div>
   </div>
   <hr>
-  <div class="btn-group btn-group-lg" role="group" >
-    <button type="button" class="btn" [ngClass]="{'btn-info': todoService.status=='all', 'btn-light':todoService.status!='all'}" (click)="filterList('all')" >All</button>
-    <button type="button" class="btn" [ngClass]="{'btn-info': todoService.status=='active', 'btn-light':todoService.status!='active'}" (click)="filterList('active')">Active</button>
-    <button type="button" class="btn" [ngClass]="{'btn-info': todoService.status=='completed', 'btn-light':todoService.status!='completed'}"  (click)="filterList('completed')">Completed</button>
+  <div class="btn-group btn-group-lg" role="group">
+    <button type="button" class="btn" [ngClass]="{'btn-info': todoService.status=='all', 'btn-light':todoService.status!='all'}"
+      (click)="filterList('all')">All</button>
+    <button type="button" class="btn" [ngClass]="{'btn-info': todoService.status=='active', 'btn-light':todoService.status!='active'}"
+      (click)="filterList('active')">Active</button>
+    <button type="button" class="btn" [ngClass]="{'btn-info': todoService.status=='completed', 'btn-light':todoService.status!='completed'}"
+      (click)="filterList('completed')">Completed</button>
   </div>
 </div>
