@@ -1,10 +1,10 @@
 <div class="list-group">
   <input type="text" [(ngModel)]="textToAdd" (keyup.enter)="addTodo()">
-  <app-todo *ngFor="let item of _todoService.todoList; let idx = index" [item]="item" appShowButton 
+  <app-todo *ngFor="let item of todoService.todoList; let idx = index" [item]="item" appShowButton 
   (removeTodoEvent)="removeTodo(idx)" (modifyStatusEvent)="modifyStatus(item)"></app-todo>
   <hr>
   <div class="row">
-    <label class="col-md-2">{{_todoService.counter + ' items left'}}</label>
+    <label class="col-md-2">{{todoService.counter + ' items left'}}</label>
     <div class="radio col-md-8"> 
       <button (click)="filterList('all')">
         All
@@ -16,6 +16,6 @@
         Completed
       </button>
     </div>
-    <a class="col-md-2" *ngIf="_todoService.completedLength !== 0" (click)="clearCompleted()">Clear completed</a>
+    <a class="col-md-2" *ngIf="todoService.completedLength !== 0" (click)="clearCompleted()">Clear completed</a>
   </div>
 </div>
