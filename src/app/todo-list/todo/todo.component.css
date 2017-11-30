@@ -1,0 +1,8 @@
+button {
+    visibility: hidden;
+}
+
+
+.doneText {
+    text-decoration: line-through;
+}
