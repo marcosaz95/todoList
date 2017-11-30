@@ -84,6 +84,7 @@ export class TodoService {
     this._todoListTmp.map(elm => {
       elm.active = assign;
     })
+    this.filterList();
     this.getCompletedTodoLength();
   }
 }
