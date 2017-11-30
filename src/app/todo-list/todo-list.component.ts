@@ -17,7 +17,7 @@ export class TodoListComponent implements OnInit {
    }
 
   ngOnInit() {
-    this._todoService.filterList('all');
+    this._todoService.filterList();
     this._todoService.getCompletedTodoLength();
   }
 
@@ -39,7 +39,8 @@ export class TodoListComponent implements OnInit {
   }
 
   filterList(status) {
-    this._todoService.filterList(status);
+    this._todoService.status = status;
+    this._todoService.filterList();
   }
 
 }

@@ -7,15 +7,25 @@ export class TodoService {
   private _todoList: ITodo[];
   private _todoListTmp: ITodo[];
   private _completedLength: number;
+  private _status: string;
 
   constructor() {
     this._todoList = [];
     this._todoListTmp = [];
+    this._status = "all";
   }
 
   get todoList() {
     return this._todoList;
   }
+
+  get status() {
+    return this._status;
+  }
+
+  set status(status) {
+    this._status = status;
+  } 
 
   get todoListTempLength() {
     return this._todoListTmp.length;
@@ -27,21 +37,22 @@ export class TodoService {
 
   add(text) {
     this._todoListTmp.push({
+      id: this._todoListTmp.length,
       text: text,
       active: false
     })
     this.getCompletedTodoLength();
   }
 
-  remove(idx) {
-    this._todoListTmp.splice(idx, 1);
-    this._todoList = this._todoListTmp;
+  remove(id) {
+    this._todoListTmp.splice(this._todoListTmp.map(elm => elm.id).indexOf(id), 1);
+    this.filterList();
     this.getCompletedTodoLength();
   }
 
   clearCompleted() {
     this._todoListTmp = this._todoListTmp.filter(elm => !elm.active);
-    this._todoList = this._todoListTmp;
+    this.filterList();
     this.getCompletedTodoLength();
   }
 
@@ -50,8 +61,8 @@ export class TodoService {
     this.getCompletedTodoLength();
   }
 
-  filterList(status) {
-    switch (status) {
+  filterList() {
+    switch (this._status) {
       case 'all':
         this._todoList = this._todoListTmp;
         break;
