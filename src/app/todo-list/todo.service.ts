@@ -25,8 +25,6 @@ export class TodoService {
     return this._completedLength;
   }
 
-
-
   add(text) {
     this._todoListTmp.push({
       text: text,
